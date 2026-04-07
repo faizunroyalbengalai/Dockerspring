@@ -150,7 +150,7 @@ jobs:
           fi
         working-directory: terraform
 
-  deploy:
+  configure:
     needs: [build, provision]
     runs-on: ubuntu-latest
     steps:
@@ -203,7 +203,7 @@ jobs:
           ANSIBLE_HOST_KEY_CHECKING: "False"
 
   verify:
-    needs: [provision, deploy]
+    needs: [provision, configure]
     runs-on: ubuntu-latest
     steps:
       - name: Health check
